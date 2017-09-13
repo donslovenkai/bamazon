@@ -12,9 +12,10 @@ var connection = mysql.createConnection({
   database: "bamazon"
 })
 
-// Execute the transation
+//Execute the transation
+//====================================================
 function execute(){
-//Pring all items for sale with details
+//Price all items for sale with details
 connection.query('SELECT * FROM Products', function(err, res){
   if(err) throw err;
 
@@ -58,9 +59,9 @@ connection.query('SELECT * FROM Products', function(err, res){
       var howMuchToBuy = parseInt(answer.qty);
       var grandTotal = parseFloat(((res[whatToBuy].Price)*howMuchToBuy).toFixed(2));
 
-      //check if quantity is sufficient
+      //Check if quantity is sufficient
       if(res[whatToBuy].StockQuantity >= howMuchToBuy){
-        //after purchase, updates quantity in Products
+        //After purchase, update quantity in Products
         connection.query("UPDATE Products SET ? WHERE ?", [
         {StockQuantity: (res[whatToBuy].StockQuantity - howMuchToBuy)},
         {ItemID: answer.id}
@@ -78,7 +79,7 @@ connection.query('SELECT * FROM Products', function(err, res){
             }
           }
           
-          //updates totalSales in departments table
+          //Update totalSales in Departments table
           connection.query("UPDATE Departments SET ? WHERE ?", [
           {TotalSales: deptRes[index].TotalSales + grandTotal},
           {DepartmentName: res[whatToBuy].DepartmentName}
@@ -96,7 +97,7 @@ connection.query('SELECT * FROM Products', function(err, res){
 })
 }
 
-//asks if they would like to purchase another item
+//Prompt to purchase another item
  function reprompt(){
    inquirer.prompt([{
      type: "confirm",

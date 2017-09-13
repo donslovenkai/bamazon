@@ -17,5 +17,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "bamazon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donslovenkai/bamazon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/donslovenkai/bamazon/issues"
+  },
+  "homepage": "https://github.com/donslovenkai/bamazon#readme"
 }
